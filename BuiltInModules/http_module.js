@@ -29,9 +29,16 @@ const server = http.createServer((req, res)=>{
 
     //but above method is synchrnous, it may consume lot memory.
     //so use stream to pass data in chunk
-    res.writeHead(200,{"content-type":"text/html"});
-    fs.createReadStream(__dirname + "/index.html").pipe(res);
+    // res.writeHead(200,{"content-type":"text/html"});
+    // fs.createReadStream(__dirname + "/index.html").pipe(res);
     
+    //HTML Template means dynamic content.
+    const name = "Chandrakant";
+    res.writeHead(200,{"content-type":"text/html"});
+    let html  = fs.readFileSync("./index.html","utf-8");
+    html = html.replace("{{name}}",name)
+    res.end(html);
+
 
 });
 

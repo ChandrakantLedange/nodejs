@@ -1,8 +1,10 @@
+const { Case } = require('change-case-all');
+
 function greet(name){
-    return console.log(`Hello ${name}, Welcome to custom package json`)
+    return console.log(Case.upper(`Hello ${name}, Welcome to custom package json`));
 }
 
-
+greet("node js");
 module.exports = greet;
 
 
